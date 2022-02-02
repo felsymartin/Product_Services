@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Simple Login Form Example</title>
+  
+  <link rel="stylesheet" href="{% static 'login/style.css' %}">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div class="login-form">
+  <form>
+    <h1>Register</h1>
+    <div class="content">
+      <div class="input-field">
+        <input type="text" placeholder="First name" autocomplete="nope">
+      </div>
+      <div class="input-field">
+        <input type="text" placeholder="Last name" autocomplete="nope">
+      </div>
+      <div class="input-field">
+        <input type="text" placeholder="User-name" autocomplete="nope" required>
+      </div>
+      <div class="input-field">
+        <input type="email" placeholder="Email" autocomplete="nope">
+      </div>
+      <div class="input-field">
+        <input type="password" placeholder="Password" autocomplete="new-password" required>
+      </div>
+      <div class="input-field">
+        <input type="password" placeholder="Re-Password" autocomplete="new-password" required>
+      </div>
+      <a href="#" class="link">Forgot Your Password?</a>
+    </div>
+    <div class="action",style="background-color: green;">
+      <button></button>
+      
+      <button>Register</button>
+      
+    </div>
+  </form>
+</div>
+<!-- partial -->
+  <script  src="{% static 'login/script.js' %}"></script>
+
+</body>
+</html>
