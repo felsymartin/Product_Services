@@ -11,10 +11,12 @@
 <body>
 <!-- partial:index.partial.html -->
 <div class="login-form">
-  <form action="validate/" method="post">
+  <form action="login1" method="post">
     {% csrf_token %}
     <h1>Login</h1>
+    
     <div class="content">
+      <font color="red">{{lmsg}}</font>
       <div class="input-field">
         <input type="text" placeholder="User-Name" autocomplete="nope" name="uname" required>
       </div>

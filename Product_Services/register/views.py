@@ -1,10 +1,23 @@
-from django.shortcuts import render
-from django.contrib.auth.models import User
+from django.shortcuts import redirect, render
+from django.contrib.auth.models import User,auth
 
 
 # Create your views here.
 def login(request):
-    return render(request,'login.html')#For  login Purpose
+    if request.method=='POST':
+        uname=request.POST['uname']
+        psw=request.POST['psw']
+        user = auth.authenticate(username=uname,password=psw)
+        if user is not None:
+            auth.login(request,user)
+            return redirect('/')
+        else:
+            lmsg='Invalid username or password!!!'
+            return render(request,'login.html',{'lmsg':lmsg})       
+             
+
+    else:
+        return render(request,'login.html')#For  login Purpose
 
 def register(request):
     if request.method=='POST':
@@ -14,6 +27,7 @@ def register(request):
         email=request.POST['email']
         npsw=request.POST['npsw']
         rpsw=request.POST['rpsw']
+        #checking the password condition & render the page on if the password matches
         if npsw==rpsw:
             if User.objects.filter(username=uname).exists():
                 umsg="The username already exists!!!"
@@ -34,14 +48,11 @@ def register(request):
 
         return render(request,'register.html')# For registration
 
-def validate(request): # To validate login process
-    uname=request.POST['uname']
-    psw=request.POST['psw']
-    if uname=='felsy' and psw=='felsy@123':
 
-        return render(request,'success.html')
-    else:
-        return render(request,'invalid.html')
+def logout(request):
+    auth.logout(request)
+    return redirect('/')
+
 
 
     
