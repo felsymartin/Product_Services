@@ -39,7 +39,8 @@ def register(request):
             
                 user= User.objects.create_user(username=uname,first_name=fname,last_name=lname,password=npsw,email=email)
                 user.save();
-                return render(request,'success.html')
+                auth.login(request,user)
+                return redirect('/')
         else:
             pmsg="Password doesn't match!!!"
             return render(request,'register.html',{'pmsg':pmsg})
