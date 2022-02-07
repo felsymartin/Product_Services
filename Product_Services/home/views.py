@@ -20,7 +20,9 @@ pro4 = models.product()
 pro4.name='Bottle'
 pro4.image='4.jpg'
 
+prolist=[pro1,pro2,pro3,pro4]
+
 def home(request):
-    return render (request,'index.html', {'Pro':pro4})
+    return render (request,'index.html', {'Pro':prolist})
 
 
