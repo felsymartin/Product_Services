@@ -49,10 +49,11 @@ def register(request):
 
         return render(request,'register.html')# For registration
 
-
 def logout(request):
     auth.logout(request)
     return redirect('/')
+
+#def portfolio(request):
 
 
 
