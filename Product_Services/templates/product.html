@@ -13,6 +13,44 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="{% static 'pro/css/styles.css' %}" rel="stylesheet" />
+        <style>
+            .textarea{
+                width: 40%;
+                height: 100px;
+                padding: 10px 17px;
+                box-sizing: border-box;
+                border: 2px solid gray;
+                border-radius: 5px;
+                font-size: 13px;
+            }
+            .sub{
+                background-color: #4CAF50;
+                border: none;
+                color: white;
+                margin: 5px 5px;
+                cursor: pointer;
+                border-radius: 4px;
+                height: 40px;
+
+            }
+            .commentarea{
+                height: 150px;
+                border: 3px solid gray;
+                overflow: auto;
+                background-color: #fcfafa;
+                border-radius: 5px;
+                margin: 5px 5px;
+                width: 50%;
+                padding: 10px 17px;                
+            }
+        .text{
+            background-color: #f0eeed ;
+            padding: 7px 7px;
+            margin: 3px 3px;
+            border-radius: 6px;
+        }
+        </style>
+       
     </head>
     <body>
         <!-- Navigation-->
@@ -52,11 +90,49 @@
                         </div>
                         <p class="lead">{{objid.description}}</p>
                         
+                      
                     </div>
+
+        <!-- Comment Section     -->
+
+                <div style="margin: 50px;">
+
+                    <h4>Comment</h4>
+                    <em>Enter your Product experience here...</em>                
+
+                    <div class="commentarea";>                                              
+            
+                        <div class="text">
+                            <h5> Riya </h5>
+                            <small>08 January 2022, 02:30 pm</small>
+                            <strong>Highly recommended</strong>
+                        </div>
+                        <div class="text">
+                            <h5> Riya </h5>
+                            <small>08 January 2022, 02:30 pm</small>
+                            <strong>Highly recommended</strong>
+                        </div>
+                        <div class="text">
+                            <h5> Riya </h5>
+                            <small>08 January 2022, 02:30 pm</small>
+                            <strong>Highly recommended</strong>
+                        </div>
+                    </div>
+
+                    
+                    <div >
+                        <textarea class="textarea" placeholder="Type comment here ... "></textarea><br>
+                        <button type="submit" class="sub"> Add Comment </button>
+                    
+                    </div>
+
+                </div>
+                    
                 </div>
             </div>
-        </section>
         
+
+       
         <!-- Footer-->
         <footer class="py-5 bg-dark">
             <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2021</p></div>

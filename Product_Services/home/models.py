@@ -12,3 +12,9 @@ class product(models.Model):
 
     def __str__(self):
         return self.name
+
+class comment(models.Model):
+    product = models.ForeignKey(product,related_name="comments",on_delete=models.CASCADE)
+    name = models.CharField(max_length=200)
+    body = models.TextField()
+    time = models.DateTimeField(auto_now_add=True)
