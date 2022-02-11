@@ -95,34 +95,43 @@
 
         <!-- Comment Section     -->
 
+
+
                 <div style="margin: 50px;">
 
                     <h4>Comment</h4>
-                    <em>Enter your Product experience here...</em>                
+                    <em>Enter your Product experience here...</em> 
+                                 
 
-                    <div class="commentarea";>                                              
+                    <div class="commentarea";>
+                    {% if not objid.comments.all %}
+                    <div class="text">
+                        <h5>No comment here </h5>
+
+                    </div>
+                    {% else %}
+                    {% for com in objid.comments.all %}
+
             
                         <div class="text">
-                            <h5> Riya </h5>
-                            <small>08 January 2022, 02:30 pm</small>
-                            <strong>Highly recommended</strong>
+                            <h5> {{com.name}} </h5>
+                            <small>{{com.time}}</small>
+                            <strong>{{com.body}}</strong>
+
                         </div>
-                        <div class="text">
-                            <h5> Riya </h5>
-                            <small>08 January 2022, 02:30 pm</small>
-                            <strong>Highly recommended</strong>
-                        </div>
-                        <div class="text">
-                            <h5> Riya </h5>
-                            <small>08 January 2022, 02:30 pm</small>
-                            <strong>Highly recommended</strong>
-                        </div>
+                    {% endfor %}
+                    {% endif %}
+                       
                     </div>
 
                     
                     <div >
-                        <textarea class="textarea" placeholder="Type comment here ... "></textarea><br>
+                    <form action="{% url 'commenttext' %}" method="get">
+                        <textarea name="txt" class="textarea" placeholder="Type comment here ... "></textarea><br>
+                        <input type="hidden" name="username" value="{{user.username}}">
+                        <input type="hidden" name="productid" value="{{objid.id}}">
                         <button type="submit" class="sub"> Add Comment </button>
+                    </form>
                     
                     </div>
 
