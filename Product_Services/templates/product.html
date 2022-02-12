@@ -95,13 +95,10 @@
 
         <!-- Comment Section     -->
 
-
-
                 <div style="margin: 50px;">
 
                     <h4>Comment</h4>
-                    <em>Enter your Product experience here...</em> 
-                                 
+                    <em>Enter your Product experience here...</em>                                  
 
                     <div class="commentarea";>
                     {% if not objid.comments.all %}
@@ -111,7 +108,6 @@
                     </div>
                     {% else %}
                     {% for com in objid.comments.all %}
-
             
                         <div class="text">
                             <h5> {{com.name}} </h5>
@@ -123,7 +119,6 @@
                     {% endif %}
                        
                     </div>
-
                     
                     <div >
                     <form action="{% url 'commenttext' %}" method="get">
