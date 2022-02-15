@@ -1,5 +1,6 @@
 from django.shortcuts import render,redirect
 from home.models import product,comment
+from django.core.cache import cache
 
 
 # Create your views here.
@@ -7,7 +8,14 @@ from home.models import product,comment
 def productdetails(request):
 
     pro_id = request.GET['id']
-    obj_id = product.objects.get(id=pro_id)
+    if cache.get(pro_id):
+        print ("###### Data from cache ########")
+        obj_id = cache.get(pro_id)
+
+    else:
+        print ('##### Data from DAtaBAse#####')
+        obj_id = product.objects.get(id=pro_id)
+        cache.set(pro_id,obj_id)
     return render(request,'product.html',{'objid':obj_id})
 
 def commenttext(request):    
