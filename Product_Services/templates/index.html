@@ -1,5 +1,7 @@
 <!DOCTYPE html>
+<!-- For loading images in static folder -->
 {% load static %}
+<!-- Going to call assets/img/portfolio/ as imgurl -->
 {% static "assets/img/portfolio/" as imgurl %}
 <html lang="en">
     <head>
@@ -55,8 +57,8 @@
         <!-- Masthead-->
         <header class="masthead">
             <div class="container">
-                <div class="masthead-subheading">Welcome To Our Studio!</div>
-                <div class="masthead-heading text-uppercase">It's Nice To Meet You</div>
+                <div class="masthead-subheading">Good to have you here!</div>
+                <div class="masthead-heading" style="font-size: 1.75rem;">Your Problem! Our Solution!</div>
                 <a class="btn btn-primary btn-xl text-uppercase" href="#services">Tell Me More</a>
             </div>
         </header>
@@ -106,7 +108,7 @@
                 <div class="row">
                     {% if user.is_authenticated %}
                     {% for data in Pro %}
-
+                    
                     <div class="col-lg-4 col-sm-6 mb-4">
                         {% if data.offer == True %}
                         <div id="offer">
@@ -126,24 +128,21 @@
                             <div class="portfolio-caption">
                                 <div class="portfolio-caption-heading">{{data.name}}</div>
                                 <div class="portfolio-caption-subheading text-muted">Illustration</div>
-                                <a href="details/?id={{data.id}}">Product Details</a>
+                                <!-- <a href="details/?id={{data.id}}">Product Details</a> -->
+                                <a href="{% url 'productdetails' data.id %}">Product Details</a>
                             </div>
                         </div>
                     </div>
 
-                    {% endfor %}
-                    
+                    {% endfor %}                    
                         
-                    </div>
+                </div>
 
                     {% else %}
                     <font>Please Login or Register to view Portfolio </font>
                     
                     {% endif %}
-                </div>
-                    
-
-                   
+                </div>               
 
             </div>
         </section>
