@@ -4,5 +4,6 @@ from .feed import LatestPostFeed
 
 urlpatterns=[
     path('',views.home,name='home'),
-    path('feed/', LatestPostFeed(), name='productupdationfeed')
+    path('feed/', LatestPostFeed(), name='productupdationfeed'),
+    path('complete/', views.search, name='inputautocomplete')
 ]

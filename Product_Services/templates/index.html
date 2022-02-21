@@ -5,6 +5,10 @@
 {% static "assets/img/portfolio/" as imgurl %}
 <html lang="en">
     <head>
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+
+        
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
@@ -19,12 +23,27 @@
         <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
+        
         <style>
             #offer{
                 background-color: rgba(255, 196, 0, 0.645);
                 position:relative;
                 top: 0px;
                 text-align: center;
+            }
+            #complete{
+                border: 2px solid rgba(255, 196, 0, 0.645);
+                border-radius: 7px;
+                width: 20%;
+                height: 40px;
+                background-color: rgba(0, 0, 0, 0.46);
+                color: white;
+                padding: 3px;
+
+            }
+            .searchimg{
+                height: 40px;
+                width: 40px;
             }
         </style>
     </head>
@@ -51,11 +70,25 @@
 
                         
                     </ul>
+                    
                 </div>
+                
             </div>
+           
         </nav>
         <!-- Masthead-->
         <header class="masthead">
+            <div>
+                <form name="searchform" action="" method="post">
+                    {% csrf_token %}
+                    <input name="search" id="complete" type="text" >
+                    <a style="background-color: rgba(0, 0, 0, 0.50) ;" onclick="document.searchform.submit()"> 
+                        <img class="searchimg" src="{% static 'search/searchiconnew.png' %}" alt="">
+                    </a>                    
+
+                </form>
+            </div>
+            <br>
             <div class="container">
                 <div class="masthead-subheading">Good to have you here!</div>
                 <div class="masthead-heading" style="font-size: 1.75rem;">Your Problem! Our Solution!</div>
@@ -351,6 +384,7 @@
                     </div>
                 </div>
             </div>
+            
         </footer>
         <!-- Portfolio Modals-->
         <!-- Portfolio item 1 modal popup-->
@@ -364,5 +398,17 @@
         <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
         <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
         <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js"></script>     
+        <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquey/1.5/jquery.min.js"></script> -->
+        <script>
+            $( function(){
+                $("#complete").autocomplete({
+                    source:"{% url 'inputautocomplete' %}"
+                });
+            });
+        </script>
+
+        
     </body>
 </html>
