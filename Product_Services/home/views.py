@@ -10,9 +10,20 @@ def home(request):
         proli = product.objects.filter(name__istartswith  = value)
         return render (request, 'index.html', {'Pro': proli} )
     else:
-
         prolist = product.objects.all()
-        return render (request,'index.html', {'Pro':prolist})
+        if 'uname' in request.COOKIES:
+            sendjinja = {
+                'Pro':prolist,
+                'username':request.COOKIES['uname'],
+                'login':request.COOKIES['Login']
+            }
+
+            return render (request,'index.html', sendjinja)
+        else:
+        
+            return render (request,'index.html', {'Pro':prolist})
+        
+
 
 # Function for search autocomplete
 def search(request):

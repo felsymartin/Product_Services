@@ -1,3 +1,4 @@
+from pydoc import resolve
 from django.shortcuts import redirect, render
 from django.contrib.auth.models import User,auth
 
@@ -9,8 +10,16 @@ def login(request):
         psw=request.POST['psw']
         user = auth.authenticate(username=uname,password=psw)
         if user is not None:
+            #Login action
             auth.login(request,user)
-            return redirect('/')
+            #Adding cookies
+
+            response = redirect('/')
+
+            response.set_cookie('uname',uname)
+            response.set_cookie('Login',True)
+            #End cookies
+            return response
         else:
             lmsg='Invalid username or password!!!'
             return render(request,'login.html',{'lmsg':lmsg})       
@@ -51,7 +60,13 @@ def register(request):
 
 def logout(request):
     auth.logout(request)
-    return redirect('/')
+
+    #delete cookies
+    response = redirect('/')
+    response.delete_cookie('uname')
+    response.delete_cookie('Login')
+
+    return response
 
 #def portfolio(request):
 
