@@ -27,13 +27,14 @@ def productdetails_2(request,pageid):
 
             request.session['recent_view'].remove (pageid)
         previous = product.objects.filter(id__in= request.session['recent_view'])
-        print("Pervious view:",previous)
+        print("Previous view:",previous)
         request.session['recent_view'].insert(0,pageid)
         # To limit the length of product in list
         if len(request.session['recent_view'])>4:
             request.session['recent_view'].pop()
 
     else:
+        previous = [1]
         request.session['recent_view'] = [pageid]
     request.session.modified = True
     print("Show Id",request.session['recent_view'])
